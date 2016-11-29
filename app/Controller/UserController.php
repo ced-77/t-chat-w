@@ -71,7 +71,8 @@ class UserController extends BaseController
  					} else { 
  						// idenfiant = 0;
  						// les infos de connection sont incorecte
- 						exit;
+ 						$this -> getFlashMessenger()->error('mot de passe ou indentifiant invalide');
+ 						
 
  					}
 
@@ -93,6 +94,14 @@ class UserController extends BaseController
   		// fin de la foncion
   		}
 
+
+  		/**
+  		 * 
+  		 */
+
+  			public function register() {
+  				$this->show('User/register');
+  			}
 
 
 

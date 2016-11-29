@@ -2,6 +2,9 @@
 
 namespace W\Model;
 
+use W\Security\StringUtils;
+
+
 /**
  * Classe requise par l'AuthentificationModel, éventuellement à étendre par le UsersModel de l'appli
  */

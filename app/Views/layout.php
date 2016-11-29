@@ -22,10 +22,17 @@
 		<nav>
 			<ul id="menu-salons">
 
+				<?php foreach ($salons as  $nomSalon) : ?>
+
+					<!-- $clef sera l'identifiant du salon ( numéro du salon dans la base de donnée ) -->
+					<li><a href="<?php echo $this -> url( 'see_salon', array( 'id' => $nomSalon['id'] ) ) ?>"><?php echo $this -> e( $nomSalon['nom'] ); ?></a></li>
+
+				<?php endforeach ; ?>
+
 				
 				<li><a href="<?php echo $this->url('default_home') ; ?>">Retour à l'accueil</a></li>
 				<li><a href="<?php echo $this->url('users_list') ; ?>" title="Liste des utilisateurs" >Liste des utilisateurs</a></li>
-				<li><a href="deconnection.php" id="deconnection" class="button">Déconnection</a></li>	
+				<li><a href="<?php echo $this->url('logout'); ?>" id="deconnection" class="button">Déconnection</a></li>	
 			</ul>
 		</nav>
 	</aside><main>

@@ -34,14 +34,14 @@
 		</p>
 		<p>
 			<label for="mot_de_passe">Mot de passe.... :</label>
-			<input type="text" name="mot_de_passe" id="mot_de_passe"  value="<?php afficherPost('mot_de_passe') ?>"  />
-			<button class="button" id="enClaire" type="button" >Caché</button>
+			<input type="password" name="mot_de_passe" id="mot_de_passe"  value="<?php afficherPost('mot_de_passe') ?>"  />
+			<button class="button" id="enClaire" type="button" >En Claire</button>
 			
 		</p>
 		<p>
 			<label for="femme">femme : </label><input type="radio" value="femme" name="sexe" id="femme" <?php afficherCheck('femme') ?> />
 			<label for="homme">homme : </label><input type="radio" value="homme" name="sexe" id="homme" <?php afficherCheck('homme') ?>  />
-			<label for="non-defini">non-defini : </label><input type="radio" value="non-defini" name="sexe" id="non-defini" <?php afficherCheck('non-defini') ?>/> <?php afficherErreur('sexe') ?>	
+			<label for="non-defini">non-defini : </label><input type="radio" value="non-defini" name="sexe" id="non-defini" <?php afficherCheck('non-defini') ?>/> 	
 		</p>
 		<p>
 			<label for="avatar">Avatar (JPG - PNG - GIF - < 1Mo) : </label>

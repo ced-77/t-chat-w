@@ -155,21 +155,35 @@ class UserController extends BaseController
   							// on doit hasher les mot de passe
   							$auth = new AuthentificationModel();
 
-  							$datas['mot_de_passe'] = $auth -> hashePassword($datas['mot_de_passe']);
+  							$datas['mot_de_passe'] = $auth -> hashPassword($datas['mot_de_passe']);
 
 
   							// on depalce l'avatar vers le dossier avatars
-  							$initialAvatarPath = $_FILES['avatar']['tmp_name'];
-  							$avatarNewName = md5(time().uniqid());
-  							$targetPath = realpath('assets/uploads/'.$avatarNewName);
-  							move_uploaded_file($initialAvatarPath, $targetPath);
+  							if  ( !empty($_FILES['avatar']['tmp_name']) ) {
+								$initialAvatarPath = $_FILES['avatar']['tmp_name'];
+	  							$avatarNewName = md5(time().uniqid());
+	  							$targetPath = realpath('assets/uploads/');
 
-  							// je vais mettre à jour nouveau nom de l'avatar dans $datas
-  							$datas['avatar'] = $avatarNewName;
+	  							move_uploaded_file($initialAvatarPath, $targetPath.'/'.$avatarNewName);
+
+	  							// je vais mettre à jour nouveau nom de l'avatar dans $datas
+	  							$datas['avatar'] = $avatarNewName;
+
+  							} else { $datas['avatar'] = 'default.png' ; }
+
+  							
 
   							// insetion en base de donnée
   							$UtilisateursModel = new UtilisateursModel();
-  							$UtilisateursModel -> insert($datas);
+
+  							unset($datas['send']);
+
+  							$userInfo = $UtilisateursModel -> insert($datas);
+
+  							$auth -> logUserIn($userInfo);
+
+  							$this -> getFlashMessenger() -> success('vous vous êtes bien inscrit à T\'Chat ! ');
+  							$this -> redirectToRoute('default_home');
 
   						}
 

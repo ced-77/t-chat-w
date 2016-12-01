@@ -14,7 +14,7 @@
 
 	<body>
 	<header>
-		<h1><?php echo $this->e($title) ; ?></h1>
+		<h1><?php echo $this->e($title) ; ?> <?php  echo ( ( $w_user )? ' ('.$w_user['pseudo'].')' : '' ); ?></h1>
 	</header>
 
 	<aside>
@@ -31,13 +31,21 @@
 
 				
 				<li><a href="<?php echo $this->url('default_home') ; ?>">Retour à l'accueil</a></li>
+
+
+				<?php if ( in_array( $w_user['role'], ['admin', 'superadmin' ] ) ) : ?>
 				<li><a href="<?php echo $this->url('users_list') ; ?>" title="Liste des utilisateurs" >Liste des utilisateurs</a></li>
-				<li><a href="<?php echo $this->url('logout'); ?>" id="deconnection" class="button">Déconnection</a></li>	
+				<?php endif ; ?>
+
+
+
+				<li><a href="<?php echo $this->url('logout'); ?>" id="deconnexion_connexion" class="button" title="Connexion et/ou  Déconnexion"><?php echo( ( $w_user ) ? 'Déconnexion' : 'Connexion' ) ;   ?></a></li>	
 			</ul>
 		</nav>
 	</aside><main>
 
 	<section>
+		<p class="erreur" ><?php $fmsg -> display(); ?></p>
 		<?= $this->section('main_content') ?>
 	</section>
 
@@ -50,6 +58,11 @@
 	<!-- jquery et javaScript -->
 		<script  src="https://code.jquery.com/jquery-2.2.4.min.js"  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="  crossorigin="anonymous"></script>
 		<script type="text/javascript" src="<?php echo $this-> assetUrl('js/close-flash-messenges.js') ?>"> </script>
+		<?php $sectionJavascripts = $this -> section('javascripts');
+		 if ($sectionJavascripts) { 
+		 	echo $sectionJavascripts; 
+		 } 
+		 ?>
 
 
 

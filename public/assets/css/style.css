@@ -105,6 +105,10 @@ main p {
 
 .messages {
 	margin: 0px;
+	padding:0;
+	flex:1;
+	overflow-y: scroll;
+	height: calc(100vh - 187px);
 }
 
 .messages li {
@@ -141,7 +145,7 @@ main p {
 	width : 90px;
 }
 
-.erreur {
+.erreur, .alert {
 	/*margin-left: 3px;*/
 	/*padding: 3px;*/ /* retiré car il affiche un bloque rouge même si la variable $erreur est vide */
 	color: yellow;
@@ -156,3 +160,27 @@ input[type="radio"]:last-of-type {
 	margin-right:0px;
 }
 
+#deconnexion_connexion {
+	text-align: center;
+}
+
+.messages > li > * {
+	vertical-align: middle;
+}
+
+span.avatar {
+	display:inline-block;
+	width: 25px;
+	height: 25px;
+	border-radius: 999px;
+
+	vertical-align: middle;
+
+
+}
+
+span.avatar img {
+	border-radius: 999px;
+	display: block;
+	max-width: 100%;
+}

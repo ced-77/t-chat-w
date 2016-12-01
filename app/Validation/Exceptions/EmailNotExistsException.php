@@ -2,10 +2,10 @@
 
 namespace Validation\Exceptions;
 
-use Respect\Validation\Exceptions\ValidationExeption;
+use Respect\Validation\Exceptions\ValidationException;
 
 
-class EmailNotExistsException extends Exceptions
+class EmailNotExistsException extends ValidationException
 {
 
 		public static $defaultTemplates = array(

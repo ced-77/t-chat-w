@@ -21,6 +21,9 @@ class UserController extends BaseController
 				pour pouvoir accéder à la liste des utilisateurs
 			*/
 				
+        $this -> allowTo( ['admin', 'superadmin'] ); // protection de l'entrée de la page en controlant son status
+
+
 				$usersModel = new UtilisateursModel();
 
 				$usersList = $usersModel-> findAll();
@@ -112,7 +115,7 @@ class UserController extends BaseController
   								'pseudo' => v::length(3,50) -> alnum() -> noWhiteSpace() -> usernameNotExists() -> setName('Nom d\'utilisateur'),
   								'email' => v::email() -> setName('E-mail') -> emailNotExists(),
   								'mot_de_passe' => v::length(3,50) -> alnum() -> noWhiteSpace() -> setName('Mot de passe'),
-  								'avatar' => v::optional( v::image() -> size('1MB') -> uploaded() ),
+  								'avatar' => v::optional( v::image() -> size('0', '1MB') -> uploaded() ),
   								'sexe' => v::in(array('femme', 'homme', 'non-defini'))
   							);
 
@@ -169,14 +172,14 @@ class UserController extends BaseController
 	  							// je vais mettre à jour nouveau nom de l'avatar dans $datas
 	  							$datas['avatar'] = $avatarNewName;
 
-  							} else { $datas['avatar'] = 'default.png' ; }
+  							} else { $datas['avatar'] = 'avatar_default.png' ; }
 
   							
 
   							// insetion en base de donnée
   							$UtilisateursModel = new UtilisateursModel();
 
-  							unset($datas['send']);
+                unset($datas['envoi']);
 
   							$userInfo = $UtilisateursModel -> insert($datas);
 

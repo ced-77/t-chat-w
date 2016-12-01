@@ -18,7 +18,7 @@
 
 	<h2>Inscription d'un utilisateur à T'Chat</h2>
 
-	<?php $fmsg -> display() ; ?>
+
 
 	<form action="<?php echo $this->url('register'); ?>" method="POST" enctype="multipart/form-data">
 		<!-- pseudo, email, password, sexe, avatar -->

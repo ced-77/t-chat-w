@@ -11,5 +11,8 @@
 		['GET|POST', '/salon/[i:id]', 'Salon#seeSalon', 'see_salon' ],
 		['GET|POST', '/login', 'User#login', 'login' ],
 		['GET', '/logout', 'User#logout', 'logout' ],
-		['GET|POST', '/register', 'User#register', 'register']
+		['GET|POST', '/register', 'User#register', 'register'],
+		// cette route va etre axessible en ajax et va servir à renvoyer les messagess d'un salon qui ont été 
+		// posté depuis un id donné
+		['GET', '/newmessages/[i:idSalon]/[i:idMessage', 'Salons#newMessages', 'new_messages' ]
 	);

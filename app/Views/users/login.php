@@ -4,7 +4,7 @@
 
 <h2>Connectez-vous à T'Chat</h2>
 
-<?php  $fmsg -> display() ; ?>
+
 
 <form action="<?php $this->url('login') ; ?>" method="POST">
 	
@@ -24,7 +24,7 @@
 	</p>
 	<p>
 		<input type="submit" class="button" value="Me connecter">
-		<a href="#" class="button" title="accedez à la page d'inscription" >Creer un nouveau compte</a>
+		<a href="<?php echo ( $this -> url('register') );  ?>" class="button" title="accedez à la page d'inscription" >Creer un nouveau compte</a>
 	</p>
 </form>
 
